@@ -70,9 +70,6 @@ h6 {
 .main_post {
   background: var(--black);
   min-height: 100vh;
-  z-index: 1;
-  padding-bottom: 1px;
-  margin-bottom: 200px;
 }
 
 .title {
@@ -173,6 +170,7 @@ body {
 
 .cover-image {
   position: absolute;
+  margin-top: 0;
   right: 300px;
   bottom: -100px;
   mix-blend-mode: exclusion !important;
@@ -224,15 +222,20 @@ figure {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: var(--s4);
+}
+
+.footer * {
+  margin: 0;
 }
 
 .section {
   border-bottom: solid 10px var(--white);
   border-top: solid 10px var(--white);
-  padding: var(--s2);
+  padding: var(--s2) 0;
   margin-top: var(--s4);
   margin-bottom: var(--s4);
 }
@@ -261,6 +264,7 @@ figure {
   top: 0;
   padding-top: var(--s2);
   padding-bottom: var(--s2);
+  margin-top: 0;
 }
 
 .nav > * {
@@ -286,6 +290,14 @@ figure {
   width: 100%;
   overflow: hidden;
   position: relative;
+}
+
+figure svg > * {
+  fill: var(--white);
+}
+
+pre {
+  overflow-x: scroll;
 }
 
 .bg-primary {
