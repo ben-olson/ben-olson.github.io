@@ -53,12 +53,12 @@
 */
 
 
-// Initalize button and potentiometer pins
+// initalize button and potentiometer pins
 const int buttonInPin = 2;  // the number of the input pushbutton pin
 const int buttonOutPin = 4; // the number of the output pushbutton pin
 const int analogInPin = A0; // the number of the analog input pin
 
-// Initailize the RGB LED pins
+// initailize the RGB LED pins
 const int redPin = 9;       // the number of the red light on the RGB LED pin
 const int greenPin = 10;    // the number of the green light on the RGB LED pin
 const int bluePin = 11;     // the number of the blue light on the RGB LED pin
@@ -86,10 +86,13 @@ void setup() {
 }
 
 void loop() {
- // read the state of the switch into a local variable:
+ /*
+  * Code taken from Debounce. Allows the push button to have a toggle state
+  */
+ // reads the state of the button and assigns into a local variable:
  int reading = digitalRead(buttonInPin);
 
- // If the switch changed, due to noise or pressing:
+ // checks if the button state changed due to noise or pressing:
  if (reading != lastButtonState) {
    // reset the debouncing timer
    lastDebounceTime = millis();
@@ -98,7 +101,7 @@ void loop() {
  // checks if the reading has been there longer than the debounce delay
  if ((millis() - lastDebounceTime) > debounceDelay) {
   
-   // if buton state changes
+   // checks if buton state changes
    if (reading != buttonState) {
      buttonState = reading;
 
@@ -108,33 +111,39 @@ void loop() {
      }
    }
  }
+ 
 
- // Writes HIGH to the output:
+ // writes HIGH to the button's output pin:
  digitalWrite(buttonOutPin, ledState);
 
- // save the reading. Next time through the loop, it'll be the lastButtonState:
+ // saves the current reading to be referred in the next loop
  lastButtonState = reading;
+
+ /*
+  * End code taken from Debounce.
+  */
 
  // read the potentiometer value:
  sensorValue = analogRead(analogInPin);
+ 
  // map it to the luminosity range:
  maxValue = map(sensorValue, 0, 1023, 0, 255);
 
  // loops up to max value, writing analog value to red pin and decreasing blue pin
  for (int i = 0; i < maxValue+1; i++) {
-   analogWrite(redPin, i);             // Increases value of red
-   analogWrite(bluePin, maxValue-i);  // Decreases value of blue
-   delay(5);                           // Slight delay in calls
+   analogWrite(redPin, i);             // increases value of red
+   analogWrite(bluePin, maxValue-i);   // decreases value of blue
+   delay(5);                           // slight delay in calls
  }
 
- // Adds green, decreases red
+ // adds green, decreases red
  for (int i = 0; i < maxValue+1; i++) {
    analogWrite(greenPin, i);
    analogWrite(redPin, maxValue-i);
    delay(5);
  }
 
- // Adds blue, decreases green
+ // adds blue, decreases green
  for (int i = 0; i < maxValue+1; i++) {
    analogWrite(bluePin, i);
    analogWrite(greenPin, maxValue-i);
