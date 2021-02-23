@@ -158,6 +158,9 @@ void loop() {
                 <figcaption class="[ uni-sans ]">Schematic of the Circuit</figcaption>
             </figure>
             <h3 class="[ header ]">Crossing my fingers that my table doesn't light on fire</h3>
+            <h3 class="[ header ]">Acknowledgements of High Voltage</h3>
+            <p>My IR receiver was independently connected to 5V from the Arduino, and hooked to an independent ground. This prevented any potential noise from the motor circuit from interfering with the IR receiver capabilities.</p>
+            <p>My motor and transistor were connected to a 9V battery, which meant that was the maximum my motor circuit would see. I'm not sure why in the examples I don't see a resistor; is it because the transistor does something special? Or does the motor circuit not need a resistor in order for current to be calculated? In any case, the current to me is unknown: probably a no-no. However, there does appear to be <em>some</em> resistance, otherwise there'd be no current. I'm not quite sure what to make of it. Regardless, the circuit seemed to get a stamp of approval, so with the flyback diode I was good to go. The flyback diode prevents any current created on power down from traveling back upstream.</p>
             <img class="[ image ]" src="../static/assignment5/circuit.jpeg" alt="The Circuit">
             <p>After putting off building the circuit, it was time. I was really nervous about wiring everything together; the fact that my last IR receiver did not go over super well made me apprehensive about hot-wiring. I made sure that all components were situated and double checked everything was in order before plugging it in. After bracing for metaphorical (and possibly physical) impact, I plugged in the battery and...</p>
             <img class="[ image ]" src="../static/assignment5/operation.gif" alt="GIF of Controlling the Fan">
