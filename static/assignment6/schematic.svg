@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Circuit Diagram, cdlibrary.dll 4.0.0.0 -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="660" height="280" xmlns="http://www.w3.org/2000/svg">
+	<line x1="530" y1="190" x2="530" y2="238" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="522" y1="238" x2="538" y2="238" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="525" y1="244" x2="535" y2="244" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="528" y1="250" x2="532" y2="250" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="580" y="170" style="font-family:Arial;font-size:11px;text-anchor:start" dominant-baseline="middle" transform="rotate(0, 580, 170)">B</text>
+	<line x1="600" y1="50" x2="600" y2="75" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="600" y1="115" x2="600" y2="140" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 600,75 L 600,77 L 593,80 L 607,86 L 593,92 L 607,98 L 593,104 L 607,110 L 600,113 L 600,115" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="586" y="95" style="font-family:Arial;font-size:11px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 586, 95)">100 Ω</text>
+	<line x1="600" y1="140" x2="600" y2="190" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 600,172 M 592,172 L 608,172 M 600,172 L 608,157 L 592,157 L 600,172" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 600,170 M 611,168 L 619,176 M 620,177 L 618,173 L 616,175 L 620,177 L 618,173" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 600,170 M 604,174 L 612,182 M 613,183 L 611,179 L 609,181 L 613,183 L 611,179" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="600" y="35" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="baseline" transform="rotate(0, 600, 35)">PIN 9</text>
+	<line x1="600" y1="43" x2="600" y2="60" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="600" cy="40" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<text x="510" y="170" style="font-family:Arial;font-size:11px;text-anchor:start" dominant-baseline="middle" transform="rotate(0, 510, 170)">G</text>
+	<line x1="530" y1="50" x2="530" y2="75" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="530" y1="115" x2="530" y2="140" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 530,75 L 530,77 L 523,80 L 537,86 L 523,92 L 537,98 L 523,104 L 537,110 L 530,113 L 530,115" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="516" y="95" style="font-family:Arial;font-size:11px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 516, 95)">220 Ω</text>
+	<line x1="530" y1="140" x2="530" y2="190" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 530,172 M 522,172 L 538,172 M 530,172 L 538,157 L 522,157 L 530,172" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 530,170 M 541,168 L 549,176 M 550,177 L 548,173 L 546,175 L 550,177 L 548,173" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 530,170 M 534,174 L 542,182 M 543,183 L 541,179 L 539,181 L 543,183 L 541,179" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="530" y="35" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="baseline" transform="rotate(0, 530, 35)">PIN 10</text>
+	<line x1="530" y1="43" x2="530" y2="60" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="530" cy="40" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<text x="440" y="170" style="font-family:Arial;font-size:11px;text-anchor:start" dominant-baseline="middle" transform="rotate(0, 440, 170)">R</text>
+	<line x1="460" y1="190" x2="600" y2="190" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="460" y1="50" x2="460" y2="75" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="460" y1="115" x2="460" y2="140" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 460,75 L 460,77 L 453,80 L 467,86 L 453,92 L 467,98 L 453,104 L 467,110 L 460,113 L 460,115" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="446" y="95" style="font-family:Arial;font-size:11px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 446, 95)">220 Ω</text>
+	<line x1="460" y1="140" x2="460" y2="190" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 460,172 M 452,172 L 468,172 M 460,172 L 468,157 L 452,157 L 460,172" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 460,170 M 471,168 L 479,176 M 480,177 L 478,173 L 476,175 L 480,177 L 478,173" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 460,170 M 464,174 L 472,182 M 473,183 L 471,179 L 469,181 L 473,183 L 471,179" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="460" y="35" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="baseline" transform="rotate(0, 460, 35)">PIN 11</text>
+	<line x1="460" y1="43" x2="460" y2="60" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="460" cy="40" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<text x="360" y="245" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="hanging" transform="rotate(0, 360, 245)">PIN A2</text>
+	<line x1="360" y1="150" x2="360" y2="237" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="360" cy="240" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<text x="360" y="35" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="baseline" transform="rotate(0, 360, 35)">PIN A1</text>
+	<line x1="360" y1="43" x2="360" y2="130" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="360" cy="40" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<line x1="240" y1="150" x2="240" y2="238" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="232" y1="238" x2="248" y2="238" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="235" y1="244" x2="245" y2="244" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="238" y1="250" x2="242" y2="250" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="240" y="35" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="baseline" transform="rotate(0, 240, 35)">+5V</text>
+	<line x1="240" y1="40" x2="240" y2="130" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<rect x="250" y="120" width="100" height="40" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<line x1="240" y1="130" x2="250" y2="130" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="240" y1="150" x2="250" y2="150" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="350" y1="130" x2="360" y2="130" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="350" y1="150" x2="360" y2="150" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="254" y="130" style="font-family:Arial;font-size:12px;text-anchor:start" dominant-baseline="middle" transform="rotate(0, 254, 130)">+5V</text>
+	<text x="254" y="150" style="font-family:Arial;font-size:12px;text-anchor:start" dominant-baseline="middle" transform="rotate(0, 254, 150)">GND</text>
+	<text x="346" y="130" style="font-family:Arial;font-size:12px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 346, 130)">VRx</text>
+	<text x="346" y="150" style="font-family:Arial;font-size:12px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 346, 150)">VRy</text>
+	<line x1="150" y1="240" x2="150" y2="238" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="142" y1="238" x2="158" y2="238" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="145" y1="244" x2="155" y2="244" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="148" y1="250" x2="152" y2="250" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="150" y1="140" x2="150" y2="170" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="150" y1="210" x2="150" y2="240" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<path d="M 150,170 L 150,172 L 143,175 L 157,181 L 143,187 L 157,193 L 143,199 L 157,205 L 150,208 L 150,210" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="136" y="190" style="font-family:Arial;font-size:11px;text-anchor:end" dominant-baseline="middle" transform="rotate(0, 136, 190)">10 kΩ</text>
+	<text x="50" y="245" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="hanging" transform="rotate(0, 50, 245)">PIN 2</text>
+	<line x1="50" y1="140" x2="50" y2="237" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="50" cy="240" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<line x1="50" y1="140" x2="150" y2="140" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="100" y1="40" x2="100" y2="76" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="100" y1="104" x2="100" y2="140" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="100" cy="79" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<ellipse cx="100" cy="101" rx="3" ry="3" style="fill-opacity:0;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<line x1="92" y1="78" x2="92" y2="102" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="86" y1="84" x2="86" y2="96" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<line x1="86" y1="90" x2="92" y2="90" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<text x="100" y="35" style="font-family:Arial;font-size:12px;text-anchor:middle" dominant-baseline="baseline" transform="rotate(0, 100, 35)">+5V</text>
+	<line x1="100" y1="40" x2="100" y2="60" style="stroke:rgb(0, 0, 0);stroke-linecap:square;stroke-width:2" />
+	<ellipse cx="530" cy="190" rx="2" ry="2" style="fill-opacity:1;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+	<ellipse cx="100" cy="140" rx="2" ry="2" style="fill-opacity:1;fill:rgb(0, 0, 0);stroke:rgb(0, 0, 0);stroke-width:2" />
+</svg>
