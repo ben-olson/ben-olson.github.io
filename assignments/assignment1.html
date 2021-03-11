@@ -1,3 +1,80 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9983e0e40de236d1b00942c92c79cdcd1aedda11e0ba9e1098cd977012aa3aba
-size 5855
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Ben in HCDE 439</title>
+</head>
+<body class="[ bg-secondary fg-primary ]">
+    <main class="[ main main_post ]">
+        <div class="[ nav invert ]">
+            <a href="/" class="[ link ] [ uni-sans ]">Ben in HCDE 439</a>
+            <a href="https://www.ben-olson.com/about" rel="no-opener" target="__blank" class="[ link ] [ uni-sans ]">About</a>
+            <a href="/" class="[ link ] [ uni-sans ]"></a>
+        </div>
+        <article class="[ write-up fg-primary flow ]">
+            <header>
+                <img class="[ image_cover ]" src="../static/assignment1/circuit.jpeg" alt="Image of Assignment">
+                <h2 class="[ font-size:s4 ]">Assignment 1: Blink</h2>
+                <h5 class="[ font-size:s1 ]"><em>"Have you tried turning it off and on again?"</em></h5>
+                <p class="[ font-size:s-1 uni-sans ]">January 15, 2021</p><br>
+            </header>
+            <p>This assignment required that I independently manipulate the power supply of at least three pins to produce a blinking pattern in the LEDs. It is an introduction to the world of circuits and required us to apply what we've learned in class about Arduino, fundamental curcuit language, and schematics.</p>
+            <h3 class="[ header ]">Setting Up the Circuit</h3>
+            <p>Following the in-class activities, I already had three circuits in series that had LEDs attached, so I decided to build and verify the circuit first. We computed the resistor value for each circuit in class, using the 1.8 V drop from the LED and the given supply power of 5+ V as a start. Given that we wanted to shoot under a 30mA current (DC for our LED), we chose to <strong>use a 220 &#8486; resistor to keep our current under 30mA</strong>.</p>
+            <p>After choosing our resistors, I plugged in the pins as well as set power and ground to make sure that the LEDs would turn on. Below is my resulting configuration:</p>
+            <figure class="[ section ]">
+                <img src="../static/assignment1/circuit.jpeg" alt="Circuit of LEDs" class="[ image ]">
+                <figcaption class="[ uni-sans ]">LED circuits on the breadboard</figcaption>
+            </figure>
+            <p>Now, it was time to reverse engineer the schematic. I think that in the future, it will be wise to start with the schematic first. However, since the in-class acitvity already had a good configuration for the assignment, I already had a solid start on the physical circuit.</p>
+            <p>From the configuration, I created the following schematic using the figures we generated from the activity:</p>
+            <figure class="[ section ] [ bg-span bg-primary fg-secondary ]">
+                <img src="../static/assignment1/schematic.svg" alt="Schematic of basic LED circuits in series" class="[ image ]">
+                <figcaption class="[ uni-sans ]">Schematic of LED circuits in series</figcaption>
+            </figure>
+            <h3 class="header">Coding the Blink Pattern</h3>
+            <p>Now that the circuit was receiving the correct current, I had to configure the blink pattern. I was able to create whatever blink pattern I wanted, and I thought it would be cool to generate a <strong>wave-like pattern</strong>. this would require looping through a pattern that ascends the order of the pins to turn them on through a timed interval, then cascades back down the order to turn them off. This should result in the desired wave.</p>
+            <p>Producing the code required a couple of simple for loops, some variables to control the speed and rate of the wave, and for me to initialize the pins. The code is in the Arduino language, which was then loaded onto my microcontroller. Below is the entire program used to create the wave.</p>
+            <figure class="[ section ]">
+                <pre>
+const int b_speed = 75; // Controls the speed of blink pattern, in ms
+const int b_rate = 1000; // Controls the rate of blink pattern, in ms
+
+void setup() {
+    for (int i = 8; i < 12; i++) { // Loops through pins 8–11
+        pinMode(i, OUTPUT); // Initializes pin to power
+    }
+}
+
+void loop() {
+    for (int i = 8; i < 12; i++) { // Loops through pins 8–11
+        digitalWrite(i, HIGH); // Turns on pin
+        delay(b_speed); // Adds 'speed' as a delay
+    }
+    
+    for (int i = 11; i > 7; i--) { // Loops backwards from pins 11–8
+        digitalWrite(i, LOW); // Turns off pin
+        delay(b_speed); // Adds 'speed' as a delay
+    }
+
+    delay(b_rate); // Adds 'rate' as a delay after loops are done
+}</pre>
+                    <figcaption class="[ uni-sans ]">Arduino Code for Blink Animation</figcaption>
+            </figure>
+            <h3 class="header">Final Test</h3>
+            <p>After all of that work, it was time to see if the program actually worked. After loading it successfully onto my Arduino, and...</p> 
+            <img class="[ image ]"src="../static/assignment1/operation.gif" alt="GIF of Circuit Running">
+            <p>It worked!! On my initial test, the speed and rate needed to be tweaked for it to look noticeable to the human eye. I found that a <strong>speed of 75ms</strong> and a <strong>rate of 1000ms</strong> seemed to produce a satisfying result.</p>
+            <p>Overall, this was a fun introduction to the world of phsyical computing, and I'm excited to see what comes next!</p>
+        </article>
+    </main>
+    <footer class="[ footer ] [ bg-primary fg-secondary flow ]">
+        <a href="../" class="[ font-size:s2 link ]">&larr; Home</a>
+        <a href="assignment2.html" class="[ font-size:s2 link ]">Next Assignment &rarr;</a>
+    </footer>    
+</body>
+</html>
+  
+  

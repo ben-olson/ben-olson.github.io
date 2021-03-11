@@ -1,3 +1,93 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a7b9c4d9e2f6be794c0aa4f261c0ed4b6d9c837044a93bd523d886f4bec17a97
-size 6235
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Ben in HCDE 439</title>
+</head>
+<body class="[ bg-secondary fg-primary ]">
+    <main class="[ main main_post ]">
+        <div class="[ nav invert ]">
+            <a href="/" class="[ link ] [ uni-sans ]">Ben in HCDE 439</a>
+            <a href="https://www.ben-olson.com/about" rel="no-opener" target="__blank" class="[ link ] [ uni-sans ]">About</a>
+            <a href="/" class="[ link ] [ uni-sans ]"></a>
+        </div>
+        <article class="[ write-up fg-primary flow ]">
+            <header>
+                <img class="[ image_cover ]" src="../static/assignment3/circuit.jpeg" alt="Image of Assignment">
+                <h2 class="[ font-size:s4 ]">Assignment 3: Input Output</h2>
+                <h5 class="[ font-size:s1 ]"><em>"If that was you on the phone, and you on the bus&hellip;then who was flickering the lights?"</em></h5>
+                <p class="[ font-size:s-1 uni-sans ]">January 31, 2021</p><br>
+            </header>
+            <p>This assignment had manipuate the voltage using a voltage divider setup. In this case, we were to use a variable resistor to spice things up, so I chose the photoresistor, as it is one of the easier ones to manipulate in real time. (I would have liked to mess around with an infared receiver, but alas, mine in the kit was most likely faulty.)</p>
+            <p>My end goal for this circuit was to make the output LED signal dim as the photoresistor received more light. This would (hopefully) make a cool reactive effect to an increased light source.</p>
+            <h3 class="[ header ]">The Schematic Setup (and Resistance Calculations)</h3>
+            <p>The schematic for this one involved two separate circuits. The first one was a voltage divider, with one of the resistors being the photoresistor and the other a 10k&#8486; resistor. A resistor is needed to allow the microcontroller to measure a current (otherwise V = I*0), and the resistance dictates the flow of current. It's convention is to use a larger resistance value (~1-10k), as this will reduce the amount of current necessary, so I stuck with 10k.</p>
+            <p>The voltage out depends on the range of values for R<sub>1</sub> in the formula for measuring output voltage: V<sub>out</sub> = R<sub>2</sub>/(R<sub>1</sub> + R<sub>2</sub>)*V<sub>in</sub>. My LDR was reading a resistance range of 10k-22.5k&#8486;. Meaning that a fixed 10k&#8486; resistor for R<sub>2</sub> would give me a min. of 2.5V and a max. of 3.46V. This window of resistance was fine by me, as I could always tweak the map values in the code to accommodate.</p>
+            <p>The resistance needed for the LED has already been calculated in the previous writeup, but it needs a stable current under 30mA, so a 220&#8486; resistor will help shoot that target.</p>
+            <figure class="[ section ] [ bg-span bg-primary fg-secondary ]">
+                <img src="../static/assignment3/schematic.svg" alt="Schematic of the Circuit" class="[ image ]">
+                <figcaption class="[ uni-sans ]">Schematic of the Circuit</figcaption>
+            </figure>
+            <h3 class="header">Setting Up the Code</h3>
+            <p>The code was simple enough to configure. I set up the pins and assigned varaibles to read the values from the voltage divider. Then, I mapped them to an analog range and constrained the endpoints. The main interesting point is that I took the inverse of the read value; this made it so that a high light value would be outputted as a low LED luminosity.</p>
+            <figure class="[ section ]">
+                <pre>
+/*
+* Ben Olson
+* 01/31/21
+* This program reads a photoresistor and outputs inverse values to an LED.
+* That is, bright light will cause the LED to dim, whereas it will shine brightest in the dark.
+* The program writes the input and output values to the serial monitor.
+*/
+
+const int photoIn = A0;   // input pin for photoresistor
+const int photoOut = 3;   // output pin for photoresistor
+const int minValue = 500; // min value for output brightness. lower value = less sensitive to dark 
+const int maxValue = 800; // max value for output brightness. high value = less sensitive to light. max value = 1023
+
+void setup() {
+ // initializes the output pin
+ pinMode(photoOut, OUTPUT); 
+ // initializes the serial monitor to signal 9600
+ Serial.begin(9600);
+}
+
+void loop() {
+ // reads the analog value from the photoresistor input in
+ int input = analogRead(photoIn);
+ // constrains the input value to the pre-defined min and max values
+ input = constrain(input, minValue, maxValue);
+ // maps the input value to the output value (range of analog values)
+ int output = map(input, minValue, maxValue, 0, 255);
+
+ // reverses the output value so that it outputs low values with high readings
+ output = 255 - output;
+
+ // writes the analog output value to the output pin
+ analogWrite(photoOut, output);
+
+ // prints the input and output values to the serial monitor
+ Serial.print("input = ");
+ Serial.print(input);
+ Serial.print("\t output = ");
+ Serial.println(output);
+}
+                </pre>
+                <figcaption class="[ uni-sans ]">Arduino Code for Fade Animation</figcaption>
+            </figure>
+            <h3 class="header">Putting My Math to the Test</h3>
+            <p>After calculating the resistances and setting up the circuit, I managed to get things working! See my result below:</p>
+            <img class="[ image ]" src="../static/assignment3/operation.gif" alt="GIF of Circuit Running">
+            <p>After some testing, I also managed to tweak the min. and max. map values to make the range sensitive to my light conditions. In the future, I want to try and learn how to callibrate this circuit to automatically configure any light conditions.</p>
+        </article>
+    </main>
+    <footer class="[ footer ] [ bg-primary fg-secondary flow ]">
+        <a href="../" class="[ font-size:s2 link ]">&larr; Home</a>
+        <a href="assignment4.html" class="[ font-size:s2 link ]">Next Assignment &rarr;</a>
+    </footer>    
+</body>
+</html>
+  
+  

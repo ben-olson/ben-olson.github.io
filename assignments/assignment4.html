@@ -1,3 +1,154 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a118627bec4073cdd7879f8a84ce196124e5c3a85e4528de5b80557887eb3a22
-size 8334
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Ben in HCDE 439</title>
+</head>
+<body class="[ bg-secondary fg-primary ]">
+    <main class="[ main main_post ]">
+        <div class="[ nav invert ]">
+            <a href="/" class="[ link ] [ uni-sans ]">Ben in HCDE 439</a>
+            <a href="https://www.ben-olson.com/about" rel="no-opener" target="__blank" class="[ link ] [ uni-sans ]">About</a>
+            <a href="/" class="[ link ] [ uni-sans ]"></a>
+        </div>
+        <article class="[ write-up fg-primary flow ]">
+            <header>
+                <img class="[ image_cover ]" src="../static/assignment4/circuit.jpeg" alt="Image of Assignment">
+                <h2 class="[ font-size:s4 ]">Assignment 4: Libraries</h2>
+                <h5 class="[ font-size:s1 ]"><em>Touch spoon, motor spin: quite simply, the Peak of Modern Technology&trade;.</em></h5>
+                <p class="[ font-size:s-1 uni-sans ]">February 13, 2021</p><br>
+            </header>
+            <p>This assignment wanted us to become familiar with using Arduino libraries and non-standard functions, objects, and syntax. I originally really wanted to use the joystick component, but apparently that's just two potentiometers and doesn't need an external library to run (drats!). I settled instead to work with capacitive touch and the servo motor I had.</p>
+            <p>The plan was simple: make input from the capacitive sensor spin the motor at a proportional rate. This time, I wanted to start with the code, as I am now familiar enough with the language to not have to compile, run, and debug every line of code.</p>
+            <h3 class="[ header ]">Code for the Capacitive Sensor and the Servo Motor</h3>
+            <p>The code for this was actually pretty simple, as I had many of the parts made from in-class activity. My capacitive sensor needed time to calibrate, and I have learned how to calibrate since last assignment (yay learning). I added a phase during setup that would pull max and min values from the environment. I also had the basics of the motor down, as it wasn't that much line of code. The program reads a value from the spoon, maps it to a range of 0–180 degrees, then moves the servo by that value. I also have the readings printed to the serial monitor for debugging.</p>
+            <figure class="[ section ]">
+                <pre>
+/*
+* Ben Olson
+* 02/13/21
+* This program calibrates and reads a capacitive sensor, then maps read values 
+* to a range of 0–180 degrees. These values are outputted to a servo motor, 
+* which moves by that number of degrees. The sensor values are also printed 
+* to the serial monitor.
+*/
+
+#include &lt;CapacitiveSensor.h&gt;
+#include &lt;Servo.h&gt;
+
+// constants
+CapacitiveSensor cs_4_2 = CapacitiveSensor(4,2);     // 1 MΩ resistor between pins 4 and 2 for  
+                                                    // absolute touch to activate, 
+                                                    // pin 2 is sensor pin
+                                                    
+Servo myServo;                                       // creates a servo object
+const int OUTPUT_PIN = 9;                            // output of capacitive sensor
+const int LED_PIN = 7;                               // pin that controls LED
+const int calliLength = 5000;                        // length of calibration period
+
+// variables
+long sensorValue = 0;     // the sensor reading value
+long sensorMin = 30000;   // the min sensor value
+long sensorMax = 0;       // the max sensor value
+
+void setup() {
+ // turn off autocalibrate on channel 1
+ cs_4_2.set_CS_AutocaL_Millis(0xFFFFFFFF);
+ 
+ // inits serial monitor at band 9600
+ Serial.begin(9600);
+
+ // inits LED and output pins to output
+ pinMode(OUTPUT_PIN, OUTPUT);
+ pinMode(LED_PIN, OUTPUT);
+ 
+ // attaches the servo on output pin to the servo object
+ myServo.attach(OUTPUT_PIN);
+ 
+ // signals the start of the calibration
+ digitalWrite(LED_PIN, HIGH);
+
+ // while timer is less than calibration period
+ while (millis() < calliLength) {
+   sensorValue = cs_4_2.capacitiveSensor(30);
+   Serial.println(sensorValue);
+
+   // sets max sensor value to the higher value between current reading and max
+   if (sensorValue > sensorMax) {
+     sensorMax = sensorValue;
+   }
+   
+   // sets min sensor value to the lower value between current reading and min
+   if (sensorValue < sensorMin) {
+     sensorMin = sensorValue;
+   }
+
+   
+   delay(20);
+ }
+
+ // signals the end of the calibration
+ digitalWrite(LED_PIN, LOW);
+
+}
+
+void loop() {
+ sensorValue = cs_4_2.capacitiveSensor(30);
+
+ // maps the sensor input values to degrees
+ sensorValue = map(sensorValue, sensorMin, sensorMax, 0, 180);
+ 
+ // constrains reading to strict degree range
+ sensorValue = constrain(sensorValue, 0, 180);
+
+ // writes sensor value as analog degree to servo
+ analogWrite(OUTPUT_PIN, sensorValue);
+
+
+ // prints the sensor range and the current sensor reading to the serial monitor
+ Serial.print("min value: ");
+ Serial.print(sensorMin);
+ Serial.print(" < ");
+ Serial.print(sensorValue);
+ Serial.print(" < max value: ");
+ Serial.println(sensorMax);
+
+ // if the sensor is reading a value greater than 0
+ if (sensorValue > 0) {
+   myServo.write(sensorValue); // writes servo to angle mapped from sensor
+   delay(500);                 // only delays if it reads a value
+ }
+
+ delay(100); // delays by 100ms to try and minimize spikes in read values
+
+}
+                </pre>
+                <figcaption class="[ uni-sans ]">Code for Capacitive Sensor & Servo</figcaption>
+            </figure>
+            <h3 class="[ header ]">Wiring the Circuit</h3>
+            <p>Wiring circuits has become a lot easier than the first assignment. At this point, I knew that the best method for my success is to chunk out the code to make sure one function works at a time. I started with making sure my spoon was feeding input data, then I tested calibration, then added a calibration indicator via LED before finally adding the servo. Chunking it out this way helped me write code and debug without having to backtrack all the way to step 1 if something went wrong.</p>
+            <p>For resistances, the capacitive sensor needed a 1M&#8486; resistor in order for it to read absolute touch. For the yellow LED, the voltage drop of 1.8V...yeah basically I need a 220&#8486; resistor; if you can't take my word for it, go back to <a href="/assignments/assignment2.html">Assignment 2</a> for my rationale.</p>
+            <h3 class="[ header ]">Making the Schematic</h3>
+            <p>The schematic was my last step. This was also easy and not as time-consuming; I had been getting pretty familiar with <a href="https://www.circuit-diagram.org" rel="no-opener" target="__blank">circuit-diagram.org</a>, the software I use to draw my schematics.</p>
+            <figure class="[ section ] [ bg-span bg-primary fg-secondary ]">
+                <img src="../static/assignment4/schematic.svg" alt="Schematic of the Circuit" class="[ image ]">
+                <figcaption class="[ uni-sans ]">Schematic of the Circuit</figcaption>
+            </figure>
+            <h3 class="[ header ]">Touch spoon...motor spin?</h3>
+            <p>After everything was done, I uploaded the program and calibrated the sensor by repeatedly tapping the spoon.</p>
+            <img class="[ image ]" src="../static/assignment4/calibration.gif" alt="GIF of Calibrating Sensor">
+            <p>Then, I waited, and then tapped my finger on the spoon, and...surprise, surprise! It worked.</p>
+            <img class="[ image ]" src="../static/assignment4/operation.gif" alt="GIF of Servo Motor Spinning">
+            <p>This assignment felt really good to complete. I never once had a hiccup or moment of confusion, and I managed to complete all of the parts in half of the time. I can finally put away my circuit box for the weekend and clean my desk space!</p>
+        </article>
+    </main>
+    <footer class="[ footer ] [ bg-primary fg-secondary flow ]">
+        <a href="../" class="[ font-size:s2 link ]">&larr; Home</a>
+        <a href="assignment5.html" class="[ font-size:s2 link ]">Next Assignment &rarr;</a>
+    </footer>    
+</body>
+</html>
+  
+  

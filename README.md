@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0e791fab7dd997a93e48cc07039a76bc8fb313b7c8abe6d70b77eda42abda1bf
-size 220
+# HCDE 439 Physical Computing Winter 2021
+
+**Instructor:** Nadya Peek
+
+**Teaching assistant:** Blair Subbaraman
+
+This is an example of a student page for HCDE439. Feel free to use this as a template, or create your own!
